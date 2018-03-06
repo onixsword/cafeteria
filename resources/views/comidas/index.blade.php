@@ -8,7 +8,17 @@
 </head>
 <body>
     <h1>Comidas</h1>
-    <button>Agregar Comidas</button>
+
+    @if ($exito != null)
+        @if($exito == 1)
+            <p>Se ha agregado una comida</p>
+        @else
+            <p>No se ha agregado ninguna comida</p>
+        @endif
+    @endif
+    <a href="{{ route('comidas.create' )}}">
+        <button>Agregar Comidas</button>
+    </a>
     <table>
         <thead>
             <tr>
@@ -22,7 +32,14 @@
                 <tr>
                     <td>{{$comida->nombre}}</td>
                     <td>{{$comida->precio}}</td>
-                    <td><button>Editar</button></td>
+                    <td>
+                        <a href="{{ route('comidas.edit' )}}">
+                            <button>Editar</button>
+                        </a>
+                        <a href="{{ route('comidas.delete' )}}">
+                            <button>Eliminar</button>
+                        </a>   
+                    </td>
                 </tr>
             @endforeach
         </tbody>
