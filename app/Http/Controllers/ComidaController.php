@@ -98,7 +98,33 @@ class ComidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comida = \App\Comida::find($id);
+        $comida->nombre = $request->input('txtNombre');
+        $comida->precio = $request->input('txtPrecio');
+
+        $respuesta = array();
+        $respuesta["exito"] = false;
+
+        if($comida->save()) {
+            $respuesta["exito"] = true;
+        }
+
+        return redirect()->route('comidas.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $comida = \App\Comida::find($id);
+        $argumentos = array();
+        $argumentos['comida'] = $comida;
+
+        return view('comidas.delete', $argumentos);
     }
 
     /**
@@ -109,6 +135,8 @@ class ComidaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comida = \App\Comida::find($id);
+        $comida->delete();
+        return redirect()->route('comidas.index');
     }
 }

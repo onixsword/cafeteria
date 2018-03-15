@@ -20,3 +20,4 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('comidas', 'ComidaController');
+Route::get('/deleteComidas', 'ComidaController@delete')->name('comidas.delete');

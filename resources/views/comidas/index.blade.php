@@ -33,12 +33,12 @@
                     <td>{{$comida->nombre}}</td>
                     <td>{{$comida->precio}}</td>
                     <td>
-                        <a href="{{ route('comidas.edit' )}}">
+                        <a href="{{ route('comidas.edit', $comida->comidaID )}}">
                             <button>Editar</button>
                         </a>
-                        <a href="{{ route('comidas.delete' )}}">
+                        <a href="{{ route('comidas.delete', $comida->comidaID )}}">
                             <button>Eliminar</button>
-                        </a>   
+                        </a>
                     </td>
                 </tr>
             @endforeach

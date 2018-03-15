@@ -7,9 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Comida</h1>
-    <form method="POST" action="{{ route('comidas.update', array('comida'=>$comida->id)) }}">
+    <h1>Editar Comida</h1>
+    <a href="{{route('comidas.index')}}"><button>Volver al index</button></a>
+    <br>
+    <form method="POST" action="{{ route('comidas.update', array('comidas'=>$comida->comidaID)) }}">
         {{ csrf_field() }}
+        <input type="hidden" name="_method" value="PUT"> 
         <label>Nombre:</label>
         <input type="text" name="txtNombre" value="{{ $comida->nombre }}">
         <label>Precio:</label>
